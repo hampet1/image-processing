@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+          <!-- main caption -->
+          {% block jumbotron %}
+
+          <h2> Image processing </h2><br>
+          <h5> try basic kernels (filters) to extract the features from the image</h5><br>
+
+          {% endblock %}
+
+          <!-- main content -->
+            {% block content %}
+            <div id = "own-bottom-margin">
+              <section class="container-fluid padding">
+                <div class="row">
+                  <div class="col-sm-4">
+                  </div>
+                  <div class="col-sm-4">
+                  <section class="container-fluid bg">
+                    <section class= "row justify-content-center ">
+                      <section class="col-12 p-0">
+                        <!-- upload picture and save it to static -->  
+                        <form action="{{ url_for('upload_image')}}" method="POST" enctype="multipart/form-data">
+                            <div class="input-group mb-3">
+                              <div class="input-group-prepend">
+                                <!-- submitting the image to the server -->
+                                <input type="submit" class="input-group-text" value="Upload" name="upload">
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="inputGroupFile01" name="image">
+                                <label class="custom-file-label" for="inputGroupFile01">Upload a file</label>
+                              </div>
+                            </div>
+                        </form><br>
+                        <!-- choosing one of the kernels -->
+                        <form action="{{ url_for('image_processing')}}" method="POST">
+                          <div class="input-group mb-3">
+                            <select class="custom-select" id="inputGroupSelect02" name="kernel">
+                              <option selected>Choose kernel</option>
+                              <option value = "sharpen">sharpen</option>
+                              <option value= "blur">blur</option>
+                              <option value= "sobel-vertical">sobel vertical</option>
+                              <option value= "sobel-horizontal">sobel horizontal</option>
+                              <option value= "laplace">laplace (all edges)</option>
+                            </select>
+                            <!-- choosing one of the color maps -->
+                            <select class="custom-select" id="inputGroupSelect02" name="colormap">
+                              <option selected>Choose colormap</option>
+                              <option value = "gray">grayscale</option>
+                              <option value= "jet">jet</option>
+                              <option value= "viridis">viridis</option>
+                              <option value= "hot">hot</option>
+                              <option value= "bone">bone</option>                           
+                            </select>
+                            <!-- submit the form to the server -->
+                            <div class="input-group-append">
+                              <input class="input-group-text" type="submit" value= "Submit" for="inputGroupSelect02">
+                            </div>
+                          </div>
+                        </form>  
+                      </section>
+                    </section>
+                  </section>
+                  <div class="col-sm-4">
+                  </div>
+                </div>
+              </section>
+            </div>
+            {% endblock %}
+      

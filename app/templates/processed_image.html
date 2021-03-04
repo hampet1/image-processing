@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+            
+            <!-- main caption -->
+            {% block jumbotron %}
+                    <h2> Image processing </h2><br>
+                    {% if kernel %}
+                        <!-- displaying what sort of kernel was used -->
+                        <h5> you applied {{kernel}} kernel to your image<h5><br><br>  
+                    {% endif %}
+
+                    <a href="{{ url_for('home')}}" class="btn btn-secondary">back home</a>
+            {% endblock %}
+            
+                {% block content %}
+                <br>
+                <section class="container-fluid bg ">
+                    <section class= "row justify-content-center ">
+                        <section class="col-8 p-0">
+                            <div class="bd-example" align="middle">
+                                <!-- displaying transformed image -->
+                                {% if filename %}
+                                    <img src="{{ url_for('display_image', filename=filename) }}" alt="" height="600" width="600"><br>
+                                {% endif %}
+                                <!-- download button -->
+                                <div class="button-space"> 
+                                    <a class="btn btn-success" role="button" href="{{ url_for('display_image', filename=filename) }}" download="proposed_file_name"> Download</a>
+                                </div>
+                            </div><br>  
+                        </section>
+                    </section>
+                </section>
+                {% endblock %}       
