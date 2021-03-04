@@ -24,6 +24,25 @@ set FLASK_ENV=development
 
 ```
 
+## Config file
+
+
+we have to set up DevelopmentConfig in config.py based on our own directory structure
+example of configuration:
+
+
+class DevelopmentConfig(Config):
+
+    DEBUG = True
+    UPLOADS = 'C:/Users/hamro/Desktop/app/app/static/images'
+    SESSION_COOKIE_SECURE = False
+    UPLOAD_FOLDER = "app/static/images/"
+    PROCESSED_IMAGE = 'C:/Users/hamro/Desktop/app/app/static/images/'
+    SEND_FILE_MAX_AGE_DEFAULT = 0
+
+- [reference¶](http://flask.pocoo.org/docs/0.12/config/)
+
+
 ## Running The App
 
 ```bash
